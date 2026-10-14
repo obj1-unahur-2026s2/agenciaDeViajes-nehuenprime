@@ -7,7 +7,49 @@ describe "teasteando" {
     const salaVipVigente = new Beneficios(tipo = "Acceso a salas VIP", costo = 200)
     const seguroNoVigente = new Beneficios(tipo = "Seguros adicionales", costo = 300, estaVigente = false)
 
+test "Un guía motivado con más de 20 viajes está altamente calificado" {
+    const guiaExperto = new Coordinador(
+        cantViajes = 21,
+        estaMotivado = true,
+        añosExp = 1,
+        rolActual = guia
+    )
 
+    assert.equals(true, guiaExperto.altamenteCalificado())
+}
+
+test "Un guía no motivado no está altamente calificado" {
+    const guiaDesmotivado = new Coordinador(
+        cantViajes = 25,
+        estaMotivado = false,
+        añosExp = 10,
+        rolActual = guia
+    )
+
+    assert.equals(false, guiaDesmotivado.altamenteCalificado())
+}
+
+test "Un asistente con menos de 3 años no está altamente calificado" {
+    const asistenteNuevo = new Coordinador(
+        cantViajes = 30,
+        estaMotivado = true,
+        añosExp = 2,
+        rolActual = asistente
+    )
+
+    assert.equals(false, asistenteNuevo.altamenteCalificado())
+}
+
+test "Un acompañante con más de 20 viajes está altamente calificado" {
+    const acompañanteExperto = new Coordinador(
+        cantViajes = 21,
+        estaMotivado = false,
+        añosExp = 0,
+        rolActual = acompañante
+    )
+
+    assert.equals(true, acompañanteExperto.altamenteCalificado())
+}
 
 test "Un pack internacional aplica el recargo del 20 por ciento" {
     const pack = new Internacional(
