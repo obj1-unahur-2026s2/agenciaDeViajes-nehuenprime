@@ -1,5 +1,25 @@
 import agenciaDeViajes.*
 
 describe "teasteando" {
-    
+    const coordinador = new Coordinador(cantViajes = 5, estaMotivado = true, añosExp = 1, rolActual = guia)
+
+    const trasladoVigente = new Beneficios(tipo = "Traslados privados", costo = 100)
+    const salaVipVigente = new Beneficios(tipo = "Acceso a salas VIP", costo = 200)
+    const seguroNoVigente = new Beneficios(tipo = "Seguros adicionales", costo = 300, estaVigente = false)
+
+
+
+test "Un pack internacional aplica el recargo del 20 por ciento" {
+    const pack = new Internacional(
+        duracion = 10,
+        precioBase = 1000,
+        coordinador = coordinador,
+        beneficios = [],
+        paisDestino = "Brasil",
+        cantEscalas = 0,
+        esDeInteres = true
+    )
+
+    assert.equals(1200, pack.valorFinal())
+}
 }

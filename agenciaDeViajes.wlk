@@ -67,10 +67,8 @@ object acompañante {
 }
 
 class Beneficios {
-    const property tipos = ["TrasladosPrivados", "AccesoVIP", "SegurosAdicionales" ]
-
     var property costo 
-    var property estaVigente
-    var property tipoElegido
+    var property estaVigente = true
+    var property tipo
 
 }
